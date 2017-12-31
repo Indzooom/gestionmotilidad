@@ -1,0 +1,19 @@
+#logoin{
+    width: 13em;
+}
+#logopa{
+    width: 10em;
+}
+.navbar-default .brand {
+    padding-left: 40px;
+    padding-bottom: 0;
+    padding-top: 20px;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
