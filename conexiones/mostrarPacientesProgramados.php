@@ -23,11 +23,23 @@ while($row = $result->fetch_assoc()) {
     echo "<td>".$_SESSION['name']."</td>";
     $ced=$row['cedula'];
     $sql2 = "SELECT * FROM phmetria_form WHERE cedula = '$ced'";
+    $sql3 = "SELECT * FROM manometria_form WHERE cedula = '$ced'";
     $result2 = $conexion->query($sql2);
+    $result3 = $conexion->query($sql3);
     if ($result2->num_rows > 0) {
+        echo "<td><a href=''><span class='label label-success' onclick='irA(\"phmetria.php\"); return false;'>Phmetria</span></a> <a href=''><span class='label label-default' onclick='irA(\"manometria.php\"); return false;'>Manometria</span></a></td>";
+        echo "<td><span class='label label-success'>En Examen</span></td>";
+        echo "<td><a href=''><span class='label label-primary' onclick='editarAsigMedico(\"".$row['pnombre']."\", ".$row["id"]."); return false;'>Asignar</span></a><a href='envios.php'><span class='label label-warning'>Enviar</span></a></td>";
+        echo "<td><a href=''><span class='label label-info' onclick='editarNotaPaciente(\"".$row['pnombre']."\", ".$row["id"]."); return false;'>Ver</span></a></td>";
+    }else if ($result3->num_rows > 0) {
+        echo "<td><a href=''><span class='label label-default' onclick='irA(\"phmetria.php\"); return false;'>Phmetria</span></a> <a href=''><span class='label label-success' onclick='irA(\"manometria.php\"); return false;'>Manometria</span></a></td>";
+        echo "<td><span class='label label-success'>En Examen</span></td>";
+        echo "<td><a href=''><span class='label label-primary' onclick='editarAsigMedico(\"".$row['pnombre']."\", ".$row["id"]."); return false;'>Asignar</span></a><a href='envios.php'><span class='label label-warning'>Enviar</span></a></td>";
+        echo "<td><a href=''><span class='label label-info' onclick='editarNotaPaciente(\"".$row['pnombre']."\", ".$row["id"]."); return false;'>Ver</span></a></td>";
+    }else if(($result2->num_rows > 0) && ($result3->num_rows > 0)){
         echo "<td><a href=''><span class='label label-success' onclick='irA(\"phmetria.php\"); return false;'>Phmetria</span></a> <a href=''><span class='label label-success' onclick='irA(\"manometria.php\"); return false;'>Manometria</span></a></td>";
         echo "<td><span class='label label-success'>En Examen</span></td>";
-        echo "<td><a href=''><span class='label label-primary' onclick='editarAsigMedico(\"".$row['pnombre']."\", ".$row["id"]."); return false;'>Asignar</span></a><a href=''><span class='label label-warning'>Enviar</span></a></td>";
+        echo "<td><a href=''><span class='label label-primary' onclick='editarAsigMedico(\"".$row['pnombre']."\", ".$row["id"]."); return false;'>Asignar</span></a><a href='envios.php'><span class='label label-warning'>Enviar</span></a></td>";
         echo "<td><a href=''><span class='label label-info' onclick='editarNotaPaciente(\"".$row['pnombre']."\", ".$row["id"]."); return false;'>Ver</span></a></td>";
     }else{
         echo "<td><a href=''><span class='label label-default' onclick='irA(\"phmetria.php\"); return false;'>Phmetria</span></a><a href=''><span class='label label-default' onclick='irA(\"manometria.php\"); return false;'>Manometria</span></a></td>";

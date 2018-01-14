@@ -77,7 +77,6 @@ $menu = "<div id='sidebar-nav' class='sidebar'>
 								<ul class='nav'>
 									<li><a onclick='verificarRol(3, 1, \"pacientes.php\"); return false;'  href='#' class=''>Pacientes</a></li>
 									<li><a onclick='verificarRol(3, 2, \"importar_pacientes.php\"); return false;' href='#' class=''>Importar Pacientes</a></li>
-									<li><a onclick='verificarRol(3, 3, \"doctores.php\"); return false;' href='#' class=''>Doctores</a></li>
 									<li><a onclick='verificarRol(3, 4, \"profesional.php\"); return false;' href='#' class=''>Profesionales</a></li>
 									<li><a onclick='verificarRol(3, 5, \"especialidades.php\"); return false;' href='#' class=''>Especialidades</a></li>
 									<li><a onclick='verificarRol(3, 6, \"genero.php\"); return false;' href='#' class=''>Genero</a></li>
@@ -93,14 +92,6 @@ $menu = "<div id='sidebar-nav' class='sidebar'>
 									<li><a onclick='verificarRol(4, 2, \"manometria.php\"); return false;' href='#' class=''>Manometria</a></li>
 									<li><a onclick='verificarRol(4, 3, \"listaPhmetria.php\"); return false;' href='#' class=''>Lista Phmetria</a></li>
 									<li><a onclick='verificarRol(4, 4, \"listaManometria.php\"); return false;' href='#' class=''>Lista Manometria</a></li>
-									<li>
-										<a href='#subPages5' data-toggle='collapse' class='collapsed'><span>Parametrización</span> <i class='icon-submenu lnr lnr-chevron-left'></i></a>
-										<div id='subPages5' class='collapse '>
-											<ul class='nav'>
-												<li><a onclick='verificarRol(4, 5, \"genero.php\"); return false;' href='#' class=''>Genero</a></li>
-											</ul>
-										</div>
-									</li>
 								</ul>
 							</div>
 						</li>

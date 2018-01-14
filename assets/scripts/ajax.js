@@ -10,8 +10,8 @@ function login() {
         dataType: "json",
         url: "conexiones/login.php",
         data: datos,
-        beforeSend: function () { },
-        success: function (response) {
+        beforeSend: function() {},
+        success: function(response) {
             if (response.res == 1) {
                 window.location.href = "pacientes_programados.php";
             } else {
@@ -35,19 +35,20 @@ function buscarPaciente() {
         dataType: "json",
         url: "conexiones/buscarPaciente.php",
         data: datos,
-        success: function (response) {
+        success: function(response) {
             if (response.res == 1) {
                 $("#nombres").val(response.name);
                 $("#apellidos").val(response.lastname);
                 $("#email").val(response.email);
                 $("#celular").val(response.celular);
                 id_paciente = response.id_paciente;
-            } if (response.res == 0) {
+            }
+            if (response.res == 0) {
                 alert("Paciente no encontrado, por favor registrar.")
             }
 
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        error: function(jqXHR, textStatus, errorThrown) {
             alert("Error");
         }
     });
@@ -64,7 +65,7 @@ function buscarPacienteForm() {
         dataType: "json",
         url: "conexiones/buscarPaciente.php",
         data: datos,
-        success: function (response) {
+        success: function(response) {
             if (response.res == 1) {
                 $("#dato3").val(response.nameful);
                 $("#dato2").val(response.lastnameful);
@@ -75,12 +76,13 @@ function buscarPacienteForm() {
                 $("#dato11").val(response.sexo);
                 $("#dato7").val(response.ciudad);
 
-            } if (response.res == 0) {
+            }
+            if (response.res == 0) {
                 alert("Paciente no encontrado, por favor registrar.")
             }
 
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        error: function(jqXHR, textStatus, errorThrown) {
             alert("Error");
         }
     });
@@ -97,7 +99,7 @@ function buscarPacienteForm2() {
         dataType: "json",
         url: "conexiones/buscarPacienteEnForm.php",
         data: datos,
-        success: function (response) {
+        success: function(response) {
             if (response.res == 1) {
                 for (j = 0; j <= 45; j++) {
                     var idd = "dato" + j;
@@ -107,7 +109,7 @@ function buscarPacienteForm2() {
 
             }
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        error: function(jqXHR, textStatus, errorThrown) {
             alert("Error");
         }
     });
@@ -124,7 +126,7 @@ function buscarPacienteForm3() {
         dataType: "json",
         url: "conexiones/buscarPacienteEnForm2.php",
         data: datos,
-        success: function (response) {
+        success: function(response) {
             if (response.res == 1) {
                 for (j = 0; j <= 42; j++) {
                     var idd = "dato" + j;
@@ -134,7 +136,7 @@ function buscarPacienteForm3() {
 
             }
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        error: function(jqXHR, textStatus, errorThrown) {
             alert("Error");
         }
     });
@@ -152,14 +154,14 @@ function validarPacienteForm() {
         dataType: "json",
         url: "conexiones/buscarPacienteForm.php",
         data: datos,
-        success: function (response) {
+        success: function(response) {
             if (response.res == 1) {
                 buscarPacienteForm2();
             } else {
                 buscarPacienteForm();
             }
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        error: function(jqXHR, textStatus, errorThrown) {
             alert("Error");
         }
     });
@@ -177,14 +179,14 @@ function validarPacienteForm2() {
         dataType: "json",
         url: "conexiones/buscarPacienteForm2.php",
         data: datos,
-        success: function (response) {
+        success: function(response) {
             if (response.res == 1) {
                 buscarPacienteForm3();
             } else {
                 buscarPacienteForm();
             }
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        error: function(jqXHR, textStatus, errorThrown) {
             alert("Error");
         }
     });
@@ -202,19 +204,20 @@ function validarRegistroPacienteForm() {
         dataType: "json",
         url: "conexiones/buscarPacienteForm.php",
         data: datos,
-        success: function (response) {
+        success: function(response) {
             if (response.res == 1) {
                 registrarPhmetria(2);
             } else {
                 registrarPhmetria(1);
             }
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        error: function(jqXHR, textStatus, errorThrown) {
             alert("Error");
         }
     });
 
 }
+
 function validarRegistroPacienteForm2() {
 
     var cedula = $("#dato1").val();
@@ -226,14 +229,14 @@ function validarRegistroPacienteForm2() {
         dataType: "json",
         url: "conexiones/buscarPacienteForm2.php",
         data: datos,
-        success: function (response) {
+        success: function(response) {
             if (response.res == 1) {
                 registrarManometria(2);
             } else {
                 registrarManometria(1);
             }
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        error: function(jqXHR, textStatus, errorThrown) {
             alert("Error");
         }
     });
@@ -252,8 +255,7 @@ function registrarActividad(tipo) {
         dataType: "json",
         url: "conexiones/registrar_actividades.php",
         data: datos,
-        success: function (response) {
-        }
+        success: function(response) {}
     });
 
 }
@@ -282,8 +284,8 @@ function enviarCorreo() {
         dataType: "json",
         url: "conexiones/enviar_correo.php",
         data: datos,
-        beforeSend: function () { },
-        complete: function (response) {
+        beforeSend: function() {},
+        complete: function(response) {
             alert("Examen enviado con exito.")
 
             datoz = {
@@ -294,7 +296,7 @@ function enviarCorreo() {
                 dataType: "json",
                 url: "conexiones/consultarSms.php",
                 data: datoz,
-                success: function (response) {
+                success: function(response) {
                     var textAux = response.valor;
                     var resTextAux = textAux.split("|");
                     var text = "";
@@ -320,8 +322,8 @@ function enviarCorreo() {
                         dataType: "json",
                         url: "http://138.128.162.82:8081//mensaje/envia.php?user=infra&password=Br0.7890&text=" + text + "&to=" + celular,
                         data: datoss,
-                        beforeSend: function () { },
-                        complete: function (response) {
+                        beforeSend: function() {},
+                        complete: function(response) {
                             location.reload();
                         }
                     });
@@ -339,6 +341,7 @@ function enviarCorreo() {
 
 
 var c = 0;
+
 function agregarExamen() {
 
     $.ajax({
@@ -346,7 +349,7 @@ function agregarExamen() {
         type: 'GET',
         contentType: "application/json",
         dataType: 'json',
-        complete: function (response) {
+        complete: function(response) {
             //var datos = jQuery.parseJSON(JSON.stringify(response));
             var tipos = response.responseText;
             var res = tipos.split("|");
@@ -359,6 +362,7 @@ function agregarExamen() {
 
     c = c + 1;
 }
+
 function validarCarga(id) {
     var doc = $("#archivos" + id).val();
     if (doc != '') {
@@ -401,7 +405,7 @@ function subirEnvios(id_file) {
         data: archivos,
         processData: false, //Debe estar en false para que JQuery no procese los datos a enviar
         cache: false
-    }).done(function (msg) {
+    }).done(function(msg) {
         //registrarEnvios(nombres, apellidos, cedula, email, tipo_examen, fecha_examen, msg);
         datos = {
             id_paciente: id_paciente,
@@ -416,7 +420,7 @@ function subirEnvios(id_file) {
             dataType: "json",
             url: "conexiones/registrar_envios.php",
             data: datos,
-            complete: function (response) {
+            complete: function(response) {
                 $('#estadoCarga' + id_file).html("<span class='label label-success'> Guardado </span>");
                 $('#btnSubir' + id_file).html("<input type='submit' class='btn btn-primary btn-sm' onclick='subirEnvios(); return false;' value='Subir' disabled='disabled'/>");
             }
@@ -462,6 +466,7 @@ function consultar(tipo) {
         );
 
     }
+
 }
 
 function registrarPaciente() {
@@ -507,15 +512,15 @@ function registrarPaciente() {
         dataType: "json",
         url: "conexiones/buscarPaciente2.php",
         data: datoss,
-        success: function (response) {
+        success: function(response) {
             if (response.res == 1) {
                 $.ajax({
                     type: "POST",
                     dataType: "json",
                     url: "conexiones/actualizarPaciente.php?id=" + response.id_paciente,
                     data: datos,
-                    beforeSend: function () { },
-                    complete: function (response) {
+                    beforeSend: function() {},
+                    complete: function(response) {
                         alert("Paciente actualizado");
                         location.reload();
                     }
@@ -527,8 +532,8 @@ function registrarPaciente() {
                     dataType: "json",
                     url: "conexiones/registrar_paciente.php",
                     data: datos,
-                    beforeSend: function () { },
-                    complete: function (response) {
+                    beforeSend: function() {},
+                    complete: function(response) {
                         alert("Registro exitoso.");
                         location.reload();
                     }
@@ -536,13 +541,13 @@ function registrarPaciente() {
             }
 
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        error: function(jqXHR, textStatus, errorThrown) {
             alert(errorThrown);
         }
     });
 
 
-
+    registrarActividad("Registrar Paciente");
 
 
 }
@@ -558,12 +563,13 @@ function registrarTipoExamen() {
         dataType: "json",
         url: "conexiones/registrar_tipo_examen.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             location.reload();
         }
     });
-
+    registrarActividad("Registrar Tipo Examen");
 }
+
 function registrarEspecialidades() {
     var especialidad = $("#especialidad").val();
 
@@ -575,12 +581,13 @@ function registrarEspecialidades() {
         dataType: "json",
         url: "conexiones/registrar_especialidad.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             location.reload();
         }
     });
-
+    registrarActividad("Registrar Especialidades");
 }
+
 function registrarGenero() {
     var genero = $("#genero").val();
 
@@ -592,11 +599,11 @@ function registrarGenero() {
         dataType: "json",
         url: "conexiones/registrar_genero.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             location.reload();
         }
     });
-
+    registrarActividad("Registrar Genero");
 }
 
 function registrarTipoMedico() {
@@ -610,11 +617,11 @@ function registrarTipoMedico() {
         dataType: "json",
         url: "conexiones/registrar_tipo_medico.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             location.reload();
         }
     });
-
+    registrarActividad("Regitrar Tipo Medico");
 }
 
 function registrarMedico() {
@@ -642,12 +649,12 @@ function registrarMedico() {
         dataType: "json",
         url: "conexiones/registrar_medico.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             alert("Medico Registrado.")
             location.reload();
         }
     });
-
+    registrarActividad("Registrar Medico");
 }
 
 function registrarUsuario() {
@@ -673,25 +680,39 @@ function registrarUsuario() {
         dataType: "json",
         url: "conexiones/buscarUsuario2.php",
         data: datoss,
-        success: function (response) {
+        success: function(response) {
             if (response.res == 1) {
+                datos_ac = {
+                    role: role,
+                    nombre: nombre,
+                    email: email,
+                    clave: clave
+                };
+
                 $.ajax({
                     type: "POST",
                     dataType: "json",
                     url: "conexiones/actualizarUsuario.php?id=" + response.id,
-                    data: datos,
-                    complete: function (response) {
+                    data: datos_ac,
+                    complete: function(response) {
                         alert("Usuario actualizado");
                         location.reload();
                     }
                 });
             } else {
+                datos_re = {
+                    role: role,
+                    nombre: nombre,
+                    email: email,
+                    clave: clave
+                };
+
                 $.ajax({
                     type: "POST",
                     dataType: "json",
                     url: "conexiones/registrar_usuario.php",
-                    data: datos,
-                    complete: function (response) {
+                    data: datos_re,
+                    complete: function(response) {
                         alert("Registro exitoso.");
                         location.reload();
                     }
@@ -699,10 +720,11 @@ function registrarUsuario() {
             }
 
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        error: function(jqXHR, textStatus, errorThrown) {
             alert("Error");
         }
     });
+    registrarActividad("Registrar Usuario");
 }
 
 function calcularEdad() {
@@ -748,7 +770,7 @@ function tablaPacientes() {
         dataType: "json",
         url: "conexiones/buscarPaciente2.php",
         data: datos,
-        success: function (response) {
+        success: function(response) {
             if (response.res == 1) {
                 $("#tabla_pacientes").load(
                     "conexiones/mostrarPacientes.php?cedula=" + cedula
@@ -761,7 +783,7 @@ function tablaPacientes() {
             }
 
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        error: function(jqXHR, textStatus, errorThrown) {
             alert(errorThrown);
         }
     });
@@ -776,7 +798,7 @@ function mostrarDatosPacientes(cedula) {
         dataType: "json",
         url: "conexiones/buscarPaciente.php",
         data: datos,
-        success: function (response) {
+        success: function(response) {
             $("#tipo_documento").val(response.tipo_cedula);
             $("#nombre1").val(response.name);
             $("#nombre2").val(response.name2);
@@ -802,11 +824,11 @@ function mostrarDatosPacientes(cedula) {
 
 
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        error: function(jqXHR, textStatus, errorThrown) {
             alert("Error");
         }
     });
-
+    registrarActividad("Mostrar Datos pacientes");
 }
 
 function eliminarTipoExamen(id) {
@@ -819,12 +841,12 @@ function eliminarTipoExamen(id) {
         dataType: "json",
         url: "conexiones/eliminarTipoExamen.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             //alert("Tipo de examen eliminado");
             location.reload();
         }
     });
-
+    registrarActividad("Eliminar Tipo Examen");
 }
 
 function eliminarTipoMedico(id) {
@@ -837,12 +859,12 @@ function eliminarTipoMedico(id) {
         dataType: "json",
         url: "conexiones/eliminarTipoMedico.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             //alert("Tipo de examen eliminado");
             location.reload();
         }
     });
-
+    registrarActividad("Eliminar Tipo Medico");
 }
 
 function eliminarEspecialidad(id) {
@@ -855,13 +877,14 @@ function eliminarEspecialidad(id) {
         dataType: "json",
         url: "conexiones/eliminarEspecialidad.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             //alert("Tipo de examen eliminado");
             location.reload();
         }
     });
-
+    registrarActividad("Eliminar Especialidad");
 }
+
 function eliminarGenero(id) {
 
     datos = {
@@ -872,12 +895,12 @@ function eliminarGenero(id) {
         dataType: "json",
         url: "conexiones/eliminarGenero.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             //alert("Tipo de examen eliminado");
             location.reload();
         }
     });
-
+    registrarActividad("Eliminar Genero");
 }
 
 function mostrarUsuarioTabla(id) {
@@ -890,14 +913,18 @@ function mostrarUsuarioTabla(id) {
         dataType: "json",
         url: "conexiones/buscarUsuario.php",
         data: datos,
-        success: function (response) {
-            $("#role").val(response.role);
+        success: function(response) {
+            var text = response.role;
+            var res = text.split(",");
+            for (i = 0; i < res.length; i++) {
+                $("#role option[value=" + res[i] + "]").attr("selected", true);
+            }
             $("#nombre").val(response.name);
             $("#email").val(response.email);
             $("#id").val(response.id);
 
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        error: function(jqXHR, textStatus, errorThrown) {
             alert("Error");
         }
     });
@@ -954,12 +981,12 @@ function registrarDoctor() {
         dataType: "json",
         url: "conexiones/registrar_doctor.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             alert("Doctor Registrado");
             location.reload();
         }
     });
-
+    registrarActividad("Registrar Doctor");
 }
 
 function eliminarDoctor(id) {
@@ -972,12 +999,12 @@ function eliminarDoctor(id) {
         dataType: "json",
         url: "conexiones/eliminarDoctor.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             //alert("Tipo de examen eliminado");
             location.reload();
         }
     });
-
+    registrarActividad("Eliminar Doctor");
 }
 
 function eliminarMedico(id) {
@@ -990,12 +1017,12 @@ function eliminarMedico(id) {
         dataType: "json",
         url: "conexiones/eliminarMedico.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             //alert("Tipo de examen eliminado");
             location.reload();
         }
     });
-
+    registrarActividad("Eliminar Medico");
 }
 
 function registrarPhmetria(op) {
@@ -1012,40 +1039,35 @@ function registrarPhmetria(op) {
             } else {
                 datos.push("n/a");
             }
-        }
-        else if (j == 18) {
+        } else if (j == 18) {
             var auxx = guardarMultiple("dato" + j);
             if (auxx != "" || auxx == null) {
                 datos.push(auxx);
             } else {
                 datos.push("n/a");
             }
-        }
-        else if (j == 20) {
+        } else if (j == 20) {
             var auxx = guardarMultiple("dato" + j);
             if (auxx != "" || auxx == null) {
                 datos.push(auxx);
             } else {
                 datos.push("n/a");
             }
-        }
-        else if (j == 21) {
+        } else if (j == 21) {
             var auxx = guardarMultiple("dato" + j);
             if (auxx != "" || auxx == null) {
                 datos.push(auxx);
             } else {
                 datos.push("n/a");
             }
-        }
-        else if (j == 30) {
+        } else if (j == 30) {
             var auxx = guardarMultiple("dato" + j);
             if (auxx != "" || auxx == null) {
                 datos.push(auxx);
             } else {
                 datos.push("n/a");
             }
-        }
-        else if (j == 42) {
+        } else if (j == 42) {
             var auxx = guardarMultiple("dato" + j);
             if (auxx != "" || auxx == null) {
                 datos.push(auxx);
@@ -1071,7 +1093,7 @@ function registrarPhmetria(op) {
             dataType: "json",
             url: "conexiones/registrarPhmetria.php",
             data: "datos=" + jackson,
-            complete: function (response) {
+            complete: function(response) {
                 alert("Formulario guardado.");
                 location.reload();
             }
@@ -1082,14 +1104,14 @@ function registrarPhmetria(op) {
             dataType: "json",
             url: "conexiones/actualizarPhmetria.php",
             data: "datos=" + jackson,
-            complete: function (response) {
+            complete: function(response) {
                 alert("Formulario Actualizado.");
                 location.reload();
             }
         });
     }
 
-
+    registrarActividad("Registrar Phmetria");
 
 }
 
@@ -1107,40 +1129,35 @@ function registrarManometria(op) {
             } else {
                 datos.push("n/a");
             }
-        }
-        else if (j == 18) {
+        } else if (j == 18) {
             var auxx = guardarMultiple("dato" + j);
             if (auxx != "" || auxx == null) {
                 datos.push(auxx);
             } else {
                 datos.push("n/a");
             }
-        }
-        else if (j == 20) {
+        } else if (j == 20) {
             var auxx = guardarMultiple("dato" + j);
             if (auxx != "" || auxx == null) {
                 datos.push(auxx);
             } else {
                 datos.push("n/a");
             }
-        }
-        else if (j == 21) {
+        } else if (j == 21) {
             var auxx = guardarMultiple("dato" + j);
             if (auxx != "" || auxx == null) {
                 datos.push(auxx);
             } else {
                 datos.push("n/a");
             }
-        }
-        else if (j == 30) {
+        } else if (j == 30) {
             var auxx = guardarMultiple("dato" + j);
             if (auxx != "" || auxx == null) {
                 datos.push(auxx);
             } else {
                 datos.push("n/a");
             }
-        }
-        else {
+        } else {
             var auxx = $("#dato" + i).val();
             if (auxx != "" || auxx == null) {
                 datos.push(auxx);
@@ -1148,7 +1165,7 @@ function registrarManometria(op) {
                 datos.push("n/a");
             }
         }
-
+        registrarActividad("Registrar Manometria");
     }
 
     var jackson = JSON.stringify(datos);
@@ -1159,7 +1176,7 @@ function registrarManometria(op) {
             dataType: "json",
             url: "conexiones/registrarManometria.php",
             data: "datos=" + jackson,
-            complete: function (response) {
+            complete: function(response) {
                 alert("Formulario guardado.");
                 location.reload();
             }
@@ -1170,7 +1187,7 @@ function registrarManometria(op) {
             dataType: "json",
             url: "conexiones/actualizarManometria.php",
             data: "datos=" + jackson,
-            complete: function (response) {
+            complete: function(response) {
                 alert("Formulario Actualizado.");
                 location.reload();
             }
@@ -1260,7 +1277,7 @@ function mostrarMultiple(id, text) {
     if (n != -1) {
         var res = text.split(",");
         for (i = 0; i < res.length; i++) {
-            if (res[i].search("Otro") != - 1) {
+            if (res[i].search("Otro") != -1) {
                 var res2 = res[i].split(":");
                 $("#" + id + " option[value=Otro]").attr("selected", true);
                 $("#" + id + "Otro").append("<input class='form-control input-sm' id=" + id + "Otr" + " placeholder='Otro Mas' type='text'>");
@@ -1278,20 +1295,15 @@ function mostrarMultiple(id, text) {
 
         if (text2 == "dato17") {
 
-        }
-        else if (text2 == "dato18") {
+        } else if (text2 == "dato18") {
 
-        }
-        else if (text2 == "dato20") {
+        } else if (text2 == "dato20") {
 
-        }
-        else if (text2 == "dato21") {
+        } else if (text2 == "dato21") {
 
-        }
-        else if (text2 == "dato30") {
+        } else if (text2 == "dato30") {
 
-        }
-        else {
+        } else {
             $("#" + id).val(text);
         }
 
@@ -1310,7 +1322,7 @@ function mostrarAlEntrar(cedula) {
             dataType: "json",
             url: "conexiones/buscarPacienteEnForm.php",
             data: datos,
-            success: function (response) {
+            success: function(response) {
                 if (response.res == 1) {
                     for (j = 0; j <= 45; j++) {
                         var idd = "dato" + j;
@@ -1337,7 +1349,7 @@ function mostrarAlEntrar2(cedula) {
             dataType: "json",
             url: "conexiones/buscarPacienteEnForm2.php",
             data: datos,
-            success: function (response) {
+            success: function(response) {
                 if (response.res == 1) {
                     for (j = 0; j <= 42; j++) {
                         var idd = "dato" + j;
@@ -1368,12 +1380,12 @@ function registrarEmpresa() {
         dataType: "json",
         url: "conexiones/registrar_empresa.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             alert("Registro exitoso");
             location.reload();
         }
     });
-
+    registrarActividad("Registrar Empresa");
 }
 
 function eliminarEmpresa(id) {
@@ -1386,12 +1398,12 @@ function eliminarEmpresa(id) {
         dataType: "json",
         url: "conexiones/eliminarEmpresa.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             alert("Empresa Eliminada");
             location.reload();
         }
     });
-
+    registrarActividad("Eliminar Empresa");
 }
 
 function registrarProfesional() {
@@ -1413,12 +1425,13 @@ function registrarProfesional() {
         dataType: "json",
         url: "conexiones/registrar_profesional.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             alert("Registro exitoso");
             location.reload();
         }
     });
 
+    registrarActividad("Registrar Profesional");
 }
 
 function eliminarProfesional(id) {
@@ -1431,12 +1444,13 @@ function eliminarProfesional(id) {
         dataType: "json",
         url: "conexiones/eliminarProfesional.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             alert("Empresa Eliminada");
             location.reload();
         }
     });
 
+    registrarActividad("Eliminar Profesional");
 }
 
 function verificarRol(destino, subdestino, path) {
@@ -1451,7 +1465,7 @@ function verificarRol(destino, subdestino, path) {
         dataType: "json",
         url: "conexiones/buscarRole.php",
         data: datos,
-        success: function (response) {
+        success: function(response) {
             var rol = response.rol;
             var role = rol.split(",");
             var op = false;
@@ -1502,12 +1516,13 @@ function actualizarSms() {
         dataType: "json",
         url: "conexiones/actualizarSms.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             alert("Mensaje personalizado guardado con exito.")
             location.reload();
         }
     });
 
+    registrarActividad("Actualizar SMS");
 }
 
 function actualizarMedico() {
@@ -1535,11 +1550,13 @@ function actualizarMedico() {
         dataType: "json",
         url: "conexiones/actualizarMedico.php",
         data: datos,
-        complete: function (response) {
+        complete: function(response) {
             alert("Medico Actualizado")
             location.reload();
         }
     });
+
+    registrarActividad("Actualizar Medico");
 
 }
 
@@ -1553,11 +1570,11 @@ function mostrarSmsAlEntrar() {
         dataType: "json",
         url: "conexiones/consultarSms.php",
         data: datos,
-        success: function (response) {
+        success: function(response) {
             $('#sms').append(response.valor);
         }
     });
-
+    registrarActividad("Mostrar SMS");
 }
 
 function editarNotaPaciente(name, id) {
@@ -1570,7 +1587,7 @@ function editarNotaPaciente(name, id) {
         dataType: "json",
         url: "conexiones/consultarNotas.php",
         data: datos,
-        success: function (response) {
+        success: function(response) {
             if (response.res == 1) {
                 $("#notasp").html(
                     "<textarea name='notas' id='notas' rows='1' placeholder='Agregar nota a " + name + "'></textarea>"
@@ -1592,7 +1609,7 @@ function editarNotaPaciente(name, id) {
     );
 
 
-
+    registrarActividad("Editar nota");
 
 }
 
@@ -1612,8 +1629,7 @@ function editarAsigMedico(name, id) {
         clonbtn
     );
 
-
-
+    registrarActividad("Editar medico");
 
 }
 
@@ -1634,15 +1650,20 @@ function guardarAsigYNotas(id) {
             dataType: "json",
             url: "conexiones/consultarNotas.php",
             data: datos,
-            success: function (response) {
+            success: function(response) {
                 if (response.res == 1) {
+
+                    datos_acn = {
+                        id: id,
+                        nota: nota,
+                    };
 
                     $.ajax({
                         type: "POST",
                         dataType: "json",
                         url: "conexiones/actualizarNota.php",
-                        data: datos,
-                        complete: function (response) {
+                        data: datos_acn,
+                        complete: function(response) {
                             $("#notas").val("");
                             $("#notas").attr("placeholder", "");
                             $("#notas").attr("disabled", "true");
@@ -1653,12 +1674,17 @@ function guardarAsigYNotas(id) {
 
                 } else {
 
+                    datos_ren = {
+                        id: id,
+                        nota: nota,
+                    };
+
                     $.ajax({
                         type: "POST",
                         dataType: "json",
                         url: "conexiones/registrar_nota.php",
-                        data: datos,
-                        complete: function (response) {
+                        data: datos_ren,
+                        complete: function(response) {
                             $("#notas").val("");
                             $("#notas").attr("placeholder", "");
                             $("#notas").attr("disabled", "true");
@@ -1678,16 +1704,21 @@ function guardarAsigYNotas(id) {
             dataType: "json",
             url: "conexiones/consultarAsignacionMedico.php",
             data: datos,
-            success: function (response) {
+            success: function(response) {
                 if (response.res == 1) {
+
+                    datos_ac = {
+                        id: id,
+                        medico: medico
+                    };
 
                     $.ajax({
                         type: "POST",
                         dataType: "json",
                         url: "conexiones/actualizarAsignacionMedico.php",
-                        data: datos,
-                        complete: function (response) {
-                            $("#medico").val("0");
+                        data: datos_ac,
+                        complete: function(response) {
+                            //$("#medico").val("0");
                             $("#medico").attr("disabled", "true");
                             alert("Medico actualizado.")
                         }
@@ -1696,13 +1727,18 @@ function guardarAsigYNotas(id) {
 
                 } else {
 
+                    datos_re = {
+                        id: id,
+                        medico: medico
+                    };
+
                     $.ajax({
                         type: "POST",
                         dataType: "json",
                         url: "conexiones/registrar_asignacion_medico.php",
-                        data: datos,
-                        complete: function (response) {
-                            $("#medico").val("0");
+                        data: datos_re,
+                        complete: function(response) {
+                            //$("#medico").val("0");
                             $("#medico").attr("disabled", "true");
                             alert("Medico Asignado.")
                         }
@@ -1714,6 +1750,7 @@ function guardarAsigYNotas(id) {
 
     }
 
+    registrarActividad("Guardar nota y medico");
 }
 
 
@@ -1725,6 +1762,7 @@ function cargarListPP() {
     $("#listPP").load(
         "conexiones/mostrarPacientesProgramados2.php?fecha1=" + fecha1 + "&fecha2=" + fecha2
     );
+    registrarActividad("Cargar Lista");
 }
 
 function cargarListAP() {
@@ -1733,6 +1771,7 @@ function cargarListAP() {
     $("#listAsigMed").load(
         "conexiones/mostrarAsignacionMedico.php?medico=" + medico
     );
+    registrarActividad("Cargar Lista");
 }
 
 function enviarAsigMed() {
@@ -1747,7 +1786,7 @@ function enviarAsigMed() {
         dataType: "json",
         url: "conexiones/mostrarAsignacionMedico2.php?medico=" + medico,
         data: datos,
-        success: function (response) {
+        success: function(response) {
             console.log("vamos bien");
             datoss = {
                 nombre: response.nombre,
@@ -1760,13 +1799,13 @@ function enviarAsigMed() {
                 dataType: "json",
                 url: "conexiones/enviar_correo_medico.php",
                 data: datoss,
-                complete: function (response) {
+                complete: function(response) {
                     alert("Correo Enviado.")
                 }
             });
         }
     });
-
+    registrarActividad("Asignar Medico");
 }
 
 function importarPacientes(tabla) {
@@ -1787,7 +1826,7 @@ function importarPacientes(tabla) {
             data: archivos,
             processData: false, //Debe estar en false para que JQuery no procese los datos a enviar
             cache: false
-        }).done(function (msg) {
+        }).done(function(msg) {
             //alert(msg)
             datos = {
                 id: 1
@@ -1797,7 +1836,7 @@ function importarPacientes(tabla) {
                 dataType: "json",
                 url: "conexiones/importarcsv_pacientes.php?ruta=" + msg,
                 data: datos,
-                complete: function (response) {
+                complete: function(response) {
                     alert("Csv importado.");
                     location.reload();
                 }
@@ -1822,7 +1861,7 @@ function importarPacientes(tabla) {
             data: archivos2,
             processData: false, //Debe estar en false para que JQuery no procese los datos a enviar
             cache: false
-        }).done(function (msg) {
+        }).done(function(msg) {
             //alert(msg)
             datos = {
                 id: 1
@@ -1832,7 +1871,7 @@ function importarPacientes(tabla) {
                 dataType: "json",
                 url: "conexiones/importarcsv_pacientesp.php?ruta=" + msg,
                 data: datos,
-                complete: function (response) {
+                complete: function(response) {
                     alert("Csv importado.");
                     //location.reload();
                 }
@@ -1842,6 +1881,7 @@ function importarPacientes(tabla) {
 
     }
 
+    registrarActividad("Importar pacientes");
 
 }
 
@@ -1852,6 +1892,7 @@ function buscarEncuestaFecha() {
     $("#encuestaFecha").load(
         "conexiones/mostrarEncuestaFecha.php?fecha1=" + fecha1 + "&fecha2=" + fecha2
     );
+    registrarActividad("Buscar Encuesta");
 }
 
 function irA(ruta) {
@@ -1881,6 +1922,7 @@ function exportarEncuesta() {
     if (op == 2) {
         window.location.href = "conexiones/exportarEncuestaTodo.php";
     }
+    registrarActividad("Exportar Encuesta");
 }
 
 function cambiarOpEncuesta() {
@@ -1893,9 +1935,5 @@ function cambiarOpEncuesta() {
         $("#fecha1").attr("disabled", "true");
         $("#fecha2").attr("disabled", "true");
     }
+    registrarActividad("Cambio de Encuesta");
 }
-
-
-
-
-
