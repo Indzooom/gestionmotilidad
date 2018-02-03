@@ -989,6 +989,27 @@ function registrarDoctor() {
     registrarActividad("Registrar Doctor");
 }
 
+function registrarRecepcionista() {
+
+    var nombre = $("#nombre").val();
+
+    datos = {
+        nombre: nombre,
+    };
+
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "conexiones/registrar_recepcionista.php",
+        data: datos,
+        complete: function(response) {
+            alert("Recepcionista Registrado");
+            location.reload();
+        }
+    });
+    registrarActividad("Registrar Recepcionista");
+}
+
 function eliminarDoctor(id) {
 
     datos = {
@@ -1005,6 +1026,24 @@ function eliminarDoctor(id) {
         }
     });
     registrarActividad("Eliminar Doctor");
+}
+
+function eliminarRecepcionista(id) {
+
+    datos = {
+        id: id,
+    };
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "conexiones/eliminarRecepcionista.php",
+        data: datos,
+        complete: function(response) {
+            //alert("Tipo de examen eliminado");
+            location.reload();
+        }
+    });
+    registrarActividad("Eliminar Recepcionista");
 }
 
 function eliminarMedico(id) {

@@ -101,6 +101,7 @@ $menu = "<div id='sidebar-nav' class='sidebar'>
 							<div id='subPages4' class='collapse '>
 								<ul class='nav'>
 									<li><a onclick='verificarRol(7, 1, \"doctores.php\"); return false;' href='#' class=''>Configuración Items</a></li>
+									<li><a onclick='verificarRol(7, 4, \"recepcionista.php\"); return false;' href='#' class=''>Recepcionista</a></li>
 									<li><a onclick='verificarRol(7, 2, \"resultados_encuesta.php\"); return false;' href='#' class=''>Resultados</a></li>
 									<li><a onclick='verificarRol(7, 3, \"exportar_encuesta.php\"); return false;' href='#' class=''>Exportar</a></li>
 								</ul>
