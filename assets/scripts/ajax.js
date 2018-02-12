@@ -1628,24 +1628,33 @@ function editarNotaPaciente(name, id) {
         data: datos,
         success: function(response) {
             if (response.res == 1) {
-                $("#notasp").html(
-                    "<textarea name='notas' id='notas' rows='1' placeholder='Agregar nota a " + name + "'></textarea>"
+                $("#notPa").html(
+                    `<div id="notasp">
+                    <textarea name='notas' id='notas' rows='1'  style='height:200px; width:560px;' placeholder='Agregar nota a ` + name + `'></textarea>
+                    </div>`
                 );
                 var text = response.nota;
                 notas.value += text.toString();
             } else {
-                $("#notasp").html(
-                    "<textarea name='notas' id='notas' rows='1' placeholder='Agregar nota a " + name + "'></textarea>"
+                $("#notPa").html(
+                    `<div id="notasp">
+                    <textarea name='notas' id='notas' rows='1'  style='height:200px; width:560px;' placeholder='Agregar nota a ` + name + `'></textarea>
+                    </div>`
                 );
             }
         }
     });
 
-    var clonbtn = $("#btnMedNot").clone(true);
-    clonbtn.attr("onclick", "guardarAsigYNotas(" + id + "); return false;");
-    $("#btnmd").html(
-        clonbtn
+    $("#medicoPacienteModalTitulo").remove();
+    $("#tit").html(
+        `<h3 class="modal-title" id="medicoPacienteModalTitulo">Editar Nota del Paciente:</h3>`
     );
+
+    $("#btnmd2").html(
+        `<button class="btn btn-primary btn-sm" id="btnMedNot" type="button" onclick="guardarAsigYNotas(` + id + `); return false;">Guardar</button>`
+    );
+
+    $("#asigmedico").attr("hidden", "");
 
 
     registrarActividad("Editar nota");
@@ -1654,18 +1663,17 @@ function editarNotaPaciente(name, id) {
 
 function editarAsigMedico(name, id) {
 
-    var clon = $("#medico").clone(true);
+    $("#asigmedico").removeAttr("hidden");
 
-    clon.removeAttr("disabled", "true");
-
-    $("#asigmedico").html(
-        clon
+    $("#btnmd2").html(
+        `<button class="btn btn-primary btn-sm" id="btnMedNot" type="button" onclick="guardarAsigYNotas(` + id + `); return false;">Guardar</button>`
     );
 
-    var clonbtn = $("#btnMedNot").clone(true);
-    clonbtn.attr("onclick", "guardarAsigYNotas(" + id + "); return false;");
-    $("#btnmd").html(
-        clonbtn
+    $("#notasp").remove();
+
+    $("#medicoPacienteModalTitulo").remove();
+    $("#tit").html(
+        `<h3 class="modal-title" id="medicoPacienteModalTitulo">Asignar Medico:</h3>`
     );
 
     registrarActividad("Editar medico");
@@ -1696,7 +1704,8 @@ function guardarAsigYNotas(id) {
                         id: id,
                         nota: nota,
                     };
-
+                    console.log(id);
+                    console.log(nota);
                     $.ajax({
                         type: "POST",
                         dataType: "json",
@@ -1813,7 +1822,13 @@ function cargarListAP() {
     registrarActividad("Cargar Lista");
 }
 
-function enviarAsigMed() {
+function modificarBtnEnvioMedico(id) {
+
+    $("#btnAsigMed").attr("onclick", "enviarAsigMed(" + id + "); return false;")
+
+}
+
+function enviarAsigMed(id) {
 
     var medico = $("#medico").val();
 
@@ -1826,12 +1841,12 @@ function enviarAsigMed() {
         url: "conexiones/mostrarAsignacionMedico2.php?medico=" + medico,
         data: datos,
         success: function(response) {
-            console.log("vamos bien");
             datoss = {
                 nombre: response.nombre,
                 apellido: response.apellido,
                 email: response.email,
                 id_medico: medico
+
             };
             $.ajax({
                 type: "POST",
@@ -1839,11 +1854,28 @@ function enviarAsigMed() {
                 url: "conexiones/enviar_correo_medico.php",
                 data: datoss,
                 complete: function(response) {
-                    alert("Correo Enviado.")
+                    enviarSMS("Buen día, GutMedica le acaba de asignar un paciente, por favor revise la bandeja de entreda de su correo electronico.", response.celular);
+
+                    dat = {
+                        id: id
+
+                    };
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: "conexiones/actualizar_estado_asignacionMedico.php",
+                        data: dat,
+                        complete: function(response) {
+                            alert("Correo y SMS Enviado con Exito.");
+                            location.reload();
+                        }
+                    });
                 }
             });
         }
     });
+
+
     registrarActividad("Asignar Medico");
 }
 
@@ -1975,4 +2007,20 @@ function cambiarOpEncuesta() {
         $("#fecha2").attr("disabled", "true");
     }
     registrarActividad("Cambio de Encuesta");
+}
+
+function enviarSMS(text, celular) {
+    datoss = {
+        id: 1
+    };
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "http://138.128.162.82:8081//mensaje/envia.php?user=infra&password=Br0.7890&text=" + text + "&to=" + celular,
+        data: datoss,
+        beforeSend: function() {},
+        complete: function(response) {
+            //location.reload();
+        }
+    });
 }

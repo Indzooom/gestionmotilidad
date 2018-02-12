@@ -63,7 +63,7 @@ $tipo="Envio";
 											include("conexiones/buscarMedicoList.php");
 											?>
 										</select>
-										<span class="input-group-btn"><button class="btn btn-primary btn-sm" type="button" onclick="cargarListAP(); return false;">Buscar</button></span>
+										<span class="input-group-btn"><button class="btn btn-primary btn-sm" type="button"  onclick="cargarListAP(); return false;">Buscar</button></span>
 									</div>
 								</div>
 							</div>
@@ -76,12 +76,14 @@ $tipo="Envio";
 									<table class="table table-striped">
 										<thead>
 											<tr>
+												<th>ID</th>
 												<th>Nombre Paciente</th>
 												<th>Apellido Paciente</th>
 												<th>Cedula Paciente</th>
 												<th>Fecha Exmamen</th>
 												<th>¿Quien Asigno?</th>
 												<th>Tipo</th>
+												<th>Estado</th>
 												<th>Evento</th>
 											</tr>
 										</thead>
@@ -97,14 +99,42 @@ $tipo="Envio";
 					</div>
 				</div>
 			</div>
+
+			<div class="modal fade" id="medEnviar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="modal-title" id="exampleModalLongTitle">Enviar Notificacion a Medico</h3>
+							<p>Esta opcion realiza un envio via SMS y Email al medico asignado.</p>
+							<small style="color: red;">Acepte y envie solo si el paciente fue atendido.</small>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+
+							<select id="unidad" class="form-control input-sm">
+								<option value="0">Seleccione la Unidad</option>
+								<option value="1">Unidad 1</option>
+								<option value="2">Unidad 2</option>
+							</select>
+							
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+							<button type="button" class="btn btn-primary" id="btnAsigMed" onclick='enviarAsigMed(0); return false;'>Aceptar y Enviar</button>
+						</div>
+					</div>
+				</div>
+			</div>
 			<!-- END MAIN CONTENT -->
 		</div>
 		<!-- END MAIN -->
-		<?php
-		include("html.php");
-		echo $footer;
-		?>
 	</div>
+
+	<?php
+	include("html.php");
+	echo $footer;
+	?>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
 	<?php

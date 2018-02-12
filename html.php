@@ -1,6 +1,7 @@
 <?php
 
-$css = "<link rel='stylesheet' href='assets/css/bootstrap.min.css'>
+$css = "<link rel='stylesheet' href='assets/css/bootstrap.css'>
+		<link rel='stylesheet' href='assets/css/bootstrap.min.css'>
         <link rel='stylesheet' href='assets/vendor/font-awesome/css/font-awesome.min.css'>
         <link rel='stylesheet' href='assets/vendor/linearicons/style.css'>
 		<link rel='stylesheet' href='assets/vendor/chartist/css/chartist-custom.css'>
@@ -15,7 +16,8 @@ $css = "<link rel='stylesheet' href='assets/css/bootstrap.min.css'>
         <link rel='apple-touch-icon' sizes='76x76' href='assets/img/apple-icon.png'>
 		<link rel='icon' type='image/png' sizes='96x96' href='assets/img/favicon.png'>
 		<script src='assets/scripts/jquery-3.2.1.min.js'></script>
-        <script src='assets/scripts/ajax.js'></script>
+		<script src='assets/scripts/ajax.js'></script>
+		
         
 		<link rel='stylesheet' href='assets/css/style.css'>
 		<link rel='icon' href='assets/img/iconn.png'>";
@@ -126,6 +128,8 @@ $js = "	<script src='assets/vendor/jquery/jquery.min.js'></script>
 		<script src='assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js'></script>
 		<script src='assets/vendor/chartist/js/chartist.min.js'></script>
 		<script src='assets/scripts/klorofil-common.js'></script>
-		<script src='assets/vendor/toastr/toastr.min.js'></script>";
+		<script src='assets/vendor/toastr/toastr.min.js'></script>
+		<script src='assets/scripts/jquery.min.js'></script>
+		<script src='assets/scripts/bootstrap.bundle.min.js'></script>";
 
 ?>

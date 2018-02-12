@@ -10,7 +10,7 @@ if ($conexion->connect_error) {
  die("La conexion falló: " . $conexion->connect_error);
 }
 
-$sql = "SELECT b.pnombre, b.papellido, b.cedula, b.fechacita, d.name, c.tipo, c.nombre, c.apellido, c.email  
+$sql = "SELECT b.pnombre, b.papellido, b.cedula, b.fechacita, d.name, c.tipo, c.nombre, c.apellido, c.email, c.celular
         FROM asignacion_medico a inner join pacientes_programados b on a.id_pacientepro=b.id 
         INNER JOIN medicos c on a.id_medico=c.id INNER JOIN users d on a.id_usuario=d.id
         WHERE a.id_medico='$medico'";
@@ -24,6 +24,7 @@ while($row = $result->fetch_assoc()) {
     $respuesta['nombre']=$row["nombre"];
     $respuesta['apellido']=$row["apellido"];
     $respuesta['email']=$row["email"];
+    $respuesta['celular']=$row["celular"];
     }
 }
 

@@ -64,7 +64,7 @@ $tipo="Envio";
 							</div>
 						</div>
 
-						<div class="col-md-9">
+						<div class="col-md-12">
 							<!-- TABLE STRIPED -->
 							<div class="panel">
 								<div class="panel-body">
@@ -74,6 +74,7 @@ $tipo="Envio";
 												<th>id</th>
 												<th>Nombre</th>
 												<th>Apellido</th>
+												<th>Cedula</th>
 												<th>Usuario</th>
 												<th>Encuesta</th>
 												<th>Estado</th>
@@ -91,38 +92,60 @@ $tipo="Envio";
 							</div>
 							<!-- END TABLE STRIPED -->
 						</div>
-						<div class="col-md-3">
-							<!-- TABLE STRIPED -->
-							<div class="panel">
-								<div class="panel-body">
-									<p>Notas del Paciente: </p>
-									<div id="notasp">
-										<textarea name="notas" id="notas" rows="1" disabled="true"></textarea>
-									</div>
-									<br>
-									<p>Asignar Medico</p>
-									<div id="asigmedico">
-										<select id="medico" class="form-control input-sm" disabled="true">
-											<option value="0">Medico</option>
-											<?php
-											include("conexiones/buscarMedicoList.php");
-											?>
-										</select>
-									</div>
-									<br>
-									<div id="btnmd">
-										<span class="input-group-btn"><button class="btn btn-primary btn-sm" id="btnMedNot" type="button" onclick="guardarAsigYNotas(0); return false;">Guardar</button></span>
-									</div>
-									
-								</div>
-							</div>
-							<!-- END TABLE STRIPED -->
-						</div>
+						
 						
 					</div>
 				</div>
 			</div>
 			<!-- END MAIN CONTENT -->
+
+			<!-- MODAL -->
+			<div class="modal fade" id="medNotPa" tabindex="-1" role="dialog" aria-labelledby="medicoPacienteModalCenter" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div id="tit">
+								
+							</div>
+							
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+
+							<div id="medPa">
+								<div hidden id="asigmedico">
+									<select id="medico" class="form-control input-sm" >
+										<option value="0">Medico</option>
+										<?php
+										include("conexiones/buscarMedicoList.php");
+										?>
+									</select>
+								</div>
+							</div>
+
+							<div id="notPa">
+								
+								
+								</div>
+							</div>
+							
+							
+						<div class="modal-footer">
+							
+							<div id="btnmd2">
+								<!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>-->
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FIN MODAL -->
+
+			
+
 		</div>
 		<!-- END MAIN -->
 		<?php
