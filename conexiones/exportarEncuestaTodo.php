@@ -31,7 +31,7 @@ if ($result->num_rows > 0) {
     $titulosColumnas = array('ID', 'FECHA', 'NOMBRE', 'TELEFONO', 'PERSONA RECEPCION', 'PROFESIONAL', 'SERVICIO',
                         'TEIMPO-CITA', 'ATENCION TELEFONICA', 'CUMPLIMIENTO-CITA', 'ACTITUD-PERSONAL-RECEPCION',
                         'ATENCION-PROFESIONAL', 'INFORMACION', 'ATENCION-PERSONAL', 'ORDEN-ASEO', 'EXPERIENCIA-GLOBAL',
-                        'RECOMENDACION', 'OBSERVACION');
+                        'RECOMENDACION', 'OBSERVACION', 'IP');
     
     $objPHPExcel->setActiveSheetIndex(0)
     ->mergeCells('A1:D1');
@@ -56,7 +56,8 @@ if ($result->num_rows > 0) {
     ->setCellValue('O3',  $titulosColumnas[14])
     ->setCellValue('P3',  $titulosColumnas[15])
     ->setCellValue('Q3',  $titulosColumnas[16])
-    ->setCellValue('R3',  $titulosColumnas[17]);
+    ->setCellValue('R3',  $titulosColumnas[17])
+    ->setCellValue('S3',  $titulosColumnas[18]);
 
     $i = 4; //Numero de fila donde se va a comenzar a rellenar
     while ($row = $result->fetch_array(MYSQLI_NUM)) {
@@ -78,7 +79,8 @@ if ($result->num_rows > 0) {
             ->setCellValue('O'.$i, $row[14])
             ->setCellValue('P'.$i, $row[15])
             ->setCellValue('Q'.$i, $row[16])
-            ->setCellValue('R'.$i, $row[17]);
+            ->setCellValue('R'.$i, $row[17])
+            ->setCellValue('S'.$i, $row[18]);
         $i++;
     }
 
@@ -89,7 +91,7 @@ if ($result->num_rows > 0) {
 
 //Ancho columna
 //$objPHPExcel->getActiveSheet()->getDefaultColumnDimension()->setWidth(22);
-for($i = 'A'; $i <= 'R'; $i++){
+for($i = 'A'; $i <= 'S'; $i++){
     $objPHPExcel->setActiveSheetIndex(0)->getColumnDimension($i)->setAutoSize(TRUE);
 }
 
