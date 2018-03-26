@@ -11,4 +11,4 @@ Aplicación web para gestionar, administrar y controlar las solicitudes de citas
 
 ## Algunas imagenes sobre la aplicación
 
-![Alt text](https://ibb.co/czfbKn)
+![Alt text](https://image.ibb.co/kTvAen/Captura_realizada_el_2018_03_26_00_21_23.png)
